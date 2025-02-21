@@ -1,16 +1,34 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
+// src/App.jsx
+import { BrowserRouter as Router, Routes, Route } from "react-router";
+import { NotesProvider } from "./context/NotesContext";
+import { AuthProvider } from "./context/AuthContext";
+import LandingPage from "./pages/LandingPage";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+import Home from "./pages/Home";
+import CreateNote from "./pages/CreateNote";
+import EditNote from "./pages/EditNote";
+import MainLayout from "./components/MainLayout";
 
 function App() {
-    const [count, setCount] = useState(0);
 
     return (
-        <>
-            <p className="text-red-600">this is a text</p>
-            <button class="btn  btn-accent ">Button</button>
-        </>
+        <AuthProvider>
+            <NotesProvider>
+                <Router>
+                    <Routes>
+                        <Route path="/" element={<LandingPage />} />
+                        <Route path="/" element={<MainLayout />}>
+                            <Route path="signin" element={<SignIn />} />
+                            <Route path="signup" element={<SignUp />} />
+                            <Route path="home" element={<Home />} />
+                            <Route path="create" element={<CreateNote />} />
+                            <Route path="edit/:id" element={<EditNote />} />
+                        </Route>
+                    </Routes>
+                </Router>
+            </NotesProvider>
+        </AuthProvider>
     );
 }
 
