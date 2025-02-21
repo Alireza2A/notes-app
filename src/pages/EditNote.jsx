@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNotes } from "../context/NotesContext";
 import { useNavigate, useParams } from "react-router-dom";
+const predefinedCategories = ["Work", "Personal", "Ideas", "Important"]; // Default categories
 
 function EditNote() {
     const { notes, dispatch } = useNotes();
@@ -31,9 +32,16 @@ function EditNote() {
         dispatch({ type: "EDIT_NOTE", payload: updatedNote });
         navigate("/home");
     };
-
+    const handlePreDefCategoryChange = (e) => {
+        const selectedCategory = e.target.value;
+        if (selectedCategory && !categories.includes(selectedCategory)) {
+            setCategories([...categories, selectedCategory]);
+        }
+        e.target.value = ""; // Reset dropdown after selection
+    };
     // Handle category input
     const handleCategoryChange = (e) => {
+        e.preventDefault();
         const category = e.target.value.trim();
         if (category && !categories.includes(category)) {
             setCategories([...categories, category]);
@@ -68,7 +76,18 @@ function EditNote() {
                     className="textarea textarea-bordered w-full"
                     required
                 ></textarea>
-
+                {/* Predefined Categories */}
+                <select
+                    onChange={handlePreDefCategoryChange}
+                    className="select-bordered w-full bg-yellow-500 text-white font-bold p-3 rounded-lg shadow-md hover:bg-yellow-600"
+                >
+                    <option value="">Select Category</option>
+                    {predefinedCategories.map((cat) => (
+                        <option key={cat} value={cat}>
+                            {cat}
+                        </option>
+                    ))}
+                </select>
                 {/* Category Input */}
                 <div className="space-y-2">
                     <input
@@ -83,24 +102,30 @@ function EditNote() {
                         {categories.map((cat) => (
                             <span
                                 key={cat}
-                                className="badge badge-secondary flex items-center gap-2"
+                                className="px-3 py-1 rounded-full bg-yellow-200 text-brown-800 font-semibold text-sm"
                             >
-                                {cat}
                                 <button
                                     type="button"
                                     className="ml-1 text-xs"
                                     onClick={() => removeCategory(cat)}
                                 >
-                                    ✕
+                                    {cat} ✕
                                 </button>
                             </span>
                         ))}
                     </div>
                 </div>
-
-                <button type="submit" className="btn btn-primary w-full">
-                    Update Note
-                </button>
+                <div className="flex justify-center items-center space-x-4">
+                    <button
+                        type="submit"
+                        className="btn btn-primary p-6 border-2 border-yellow-900"
+                    >
+                        Update Note
+                    </button>
+                    <button className="btn btn-primary p-6 border-2 border-yellow-900">
+                        Cancel
+                    </button>
+                </div>
             </form>
         </div>
     );

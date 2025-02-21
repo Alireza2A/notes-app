@@ -14,11 +14,11 @@ function SignIn() {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+        <div className="flex flex-col items-center justify-center min-h-screen">
             <h2 className="text-2xl font-bold mb-4">Sign In</h2>
             <form
                 onSubmit={handleSubmit}
-                className="bg-white p-6 rounded shadow-md w-80"
+                className="bg-yellow-950 p-6 rounded shadow-md w-80"
             >
                 <input
                     type="email"

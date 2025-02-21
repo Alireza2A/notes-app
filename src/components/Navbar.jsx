@@ -5,7 +5,7 @@ function Navbar() {
     const { user, signOut } = useAuth();
 
     return (
-        <nav className="bg-gradient-to-r from-brown-700 to-brown-900 text-yellow-300 p-4 flex justify-between items-center shadow-md">
+        <nav className="sticky top-0 z-16 bg-gradient-to-r from-brown-700 to-brown-900 text-yellow-300 p-4 flex justify-between items-center shadow-md">
             <Link to="/home" className="text-2xl font-bold">
                 Notes App
             </Link>

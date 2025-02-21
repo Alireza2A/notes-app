@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+    @apply min-h-screen; /* Ensure full screen height */
+}
 body {
     @apply bg-gradient-to-br from-yellow-300 via-yellow-500 to-brown-700 text-brown-900;
 }
@@ -27,9 +31,9 @@ body {
 }
 
 .container {
-    @apply max-w-4xl mx-auto p-6;
+    @apply max-w-full mx-auto p-6;
 }
 
 .card {
-    @apply bg-brown-100 shadow-lg rounded-xl p-4;
+    @apply bg-brown-100 shadow-lg rounded-xl p-2 max-w-xs;
 }

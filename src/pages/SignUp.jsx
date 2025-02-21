@@ -13,11 +13,26 @@ function SignUp() {
     };
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+        <div className="flex flex-col items-center justify-center min-h-screen">
             <h2 className="text-2xl font-bold mb-4">Sign Up</h2>
-            <form onSubmit={handleSubmit} className="bg-white p-6 rounded shadow-md w-80">
-                <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} className="input input-bordered w-full mb-2" />
-                <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} className="input input-bordered w-full mb-4" />
+            <form
+                onSubmit={handleSubmit}
+                className="bg-white p-6 rounded shadow-md w-80"
+            >
+                <input
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="input input-bordered w-full mb-2"
+                />
+                <input
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    className="input input-bordered w-full mb-4"
+                />
                 <button type="submit" className="btn btn-primary w-full">
                     Sign Up
                 </button>
