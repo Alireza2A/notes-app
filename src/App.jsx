@@ -9,9 +9,8 @@ import Home from "./pages/Home";
 import CreateNote from "./pages/CreateNote";
 import EditNote from "./pages/EditNote";
 import MainLayout from "./components/MainLayout";
-
+import "./styles/tailwind.css";
 function App() {
-
     return (
         <AuthProvider>
             <NotesProvider>

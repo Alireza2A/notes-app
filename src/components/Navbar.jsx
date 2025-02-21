@@ -5,16 +5,16 @@ function Navbar() {
     const { user, signOut } = useAuth();
 
     return (
-        <nav className="bg-blue-500 text-white p-4 flex justify-between">
-            <Link to="/home" className="text-lg font-bold">
+        <nav className="bg-gradient-to-r from-brown-700 to-brown-900 text-yellow-300 p-4 flex justify-between items-center shadow-md">
+            <Link to="/home" className="text-2xl font-bold">
                 Notes App
             </Link>
             {user ? (
-                <button onClick={signOut} className="btn btn-secondary">
+                <button onClick={signOut} className="btn-secondary">
                     Sign Out
                 </button>
             ) : (
-                <Link to="/signin" className="btn btn-primary">
+                <Link to="/signin" className="btn-primary">
                     Sign In
                 </Link>
             )}
